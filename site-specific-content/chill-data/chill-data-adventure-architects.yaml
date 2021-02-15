@@ -1,0 +1,13 @@
+--- !ChillNode
+name: landing_page
+route: /adventure-architects/
+template: docs.html.jinja2
+value:
+  canonical_path: /
+  pageimagemedia: puzzle-massive-logo-primary-on-white--1200x630.jpg
+  pageimagemedia_width: 1200
+  pageimagemedia_height: 630
+  content: other/landing-content.html
+  page:
+    description: Adventure Architects puzzle zone
+  title: Adventure Architects

@@ -1,0 +1,39 @@
+<div class="pm-Footer">
+  <div class="">
+    <div class="">
+      <nav class="pm-Footer-nav">
+        <a href="/">
+          Home
+        </a>
+      </nav>
+
+      <p class="pm-Footer-copyright" style="float:left;">
+        Copyright 2011 - 2021,
+        <span class="u-textNoWrap">{{ config.PACKAGEJSON.author }}</span>
+        <br>
+        Licensed under the
+        <a href="https://github.com/jkenlooper/puzzle-massive/blob/master/LICENSE">GNU Affero General Public License v3.0</a>
+      </p>
+    </div>
+    <div class="">
+      <p class="u-textRight">
+        {#- Show a link to this site's source code in order to comply with the GNU Affero General Public License. -#}
+          <a class="u-block" href="{{ config.SOURCE_CODE_LINK }}">Source code for <strong>{{ config.SITE_TITLE }}</strong></a>
+          <span class="u-block">
+           which is forked from Puzzle Massive.
+          </span>
+          <span class="u-block">Version: {{ config.VERSION }}</span>
+        {#- The 'puzzle-massive' link here should always be to the Puzzle
+        Massive source code, but show this site's version from the package.json.
+        -#}
+        <a href="https://github.com/jkenlooper/puzzle-massive/">
+          puzzle-massive
+        </a>
+        <em class="u-block"><small>
+        Massive assembly required.
+        <!-- Because "some assembly required" would be an understatement. -->
+        </small></em>
+      </p>
+    </div>
+  </div>
+</div>
