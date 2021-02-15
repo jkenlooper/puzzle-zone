@@ -188,7 +188,9 @@
             {% else %}
             {% if recent.status == IN_QUEUE %}
               {# At this time this is only used for bumping the queue for puzzles that are in the queue. #}
+              {#
               <pm-puzzle-original-actions view="buttons" puzzle-id="{{ recent.puzzle_id }}" status="{{ recent.status }}"></pm-puzzle-original-actions>
+              #}
               {% endif %}
             {% endif %}
           {% endif %}
@@ -205,13 +207,16 @@
           {% else %}
           {% if recent.status == IN_QUEUE %}
             {# At this time this is only used for bumping the queue for puzzles that are in the queue. #}
+          {#
             <pm-puzzle-original-actions view="message" puzzle-id="{{ recent.puzzle_id }}" status="{{ recent.status }}"></pm-puzzle-original-actions>
+          #}
             {% endif %}
           {% endif %}
         </div>
       </div>
     </pm-puzzle-status-reload>
 
+    {#
     {% if not recent.is_original %}
     <p class="pm-Preview-statusNote">
       Puzzle instance created by
@@ -221,19 +226,25 @@
       {%- endif -%}
     </p>
     {% endif %}
+    #}
 
+    {#
     {% if recent.status == COMPLETED and not recent.is_recent -%}
     <pm-dot-require min="200" type="info">
       This puzzle requires more dots in order to rebuild.
     </pm-dot-require>
     {% endif %}
+    #}
 
     {% if recent.permission == -1 -%} {# PRIVATE #}
+    {#
     <p class="pm-Preview-statusNote">
       This jigsaw puzzle {% if not recent.is_original %}instance{% endif %} is not publicly listed on the site.
     </p>
+    #}
     {% endif %}
     {% if recent.status == COMPLETED and recent.is_recent -%}
+    {#
     <p class="pm-Preview-statusNote">
       This jigsaw puzzle has been recently completed
       {%- if not (recent.permission == -1 and recent.is_original) -%}
@@ -242,8 +253,16 @@
       {%- endif -%}
     .
     </p>
+    #}
     {% endif %}
     {% if recent.status == COMPLETED and not recent.is_recent -%}
+    {#
+    <p class="pm-Preview-statusNote">
+    This jigsaw puzzle has been completed.
+    </p>
+    #}
+    {% endif %}
+    {% if recent.status == COMPLETED -%}
     <p class="pm-Preview-statusNote">
     This jigsaw puzzle has been completed.
     </p>
@@ -259,18 +278,22 @@
     on the puzzle until the owner unfreezes it.
     </p>
     {% elif recent.status == IN_QUEUE %}
+    {#
     <p class="pm-Preview-statusNote">
     This puzzle is currently in the queue and is not active.  Pieces can't be moved
     on the puzzle until then.
     </p>
+    #}
     {% endif %}
 
   </div>
 
   <div class="pm-Preview-players">
+    {#
     <pm-latest-player-list
       puzzle-id="{{recent.puzzle_id}}"
       limit="100"></pm-latest-player-list>
+      #}
   </div>
 
 </div>

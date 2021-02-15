@@ -1,0 +1,12 @@
+{% extends 'base.html.jinja2' %}
+
+{% block main %}
+<section  class="pm-Doc">
+
+{# Only show the relevant information for players that have cookies by reusing pm-dot-require info. #}
+<pm-dot-require min="99999" type="info">
+  <a class="Button Button--accent" href="{{ next.next }}">Continue</a>
+</pm-dot-require>
+
+</section>
+{% endblock %}

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+#TODO: Add basic auth to upload page
+#TODO: remove iframe protection
+
 set -eu -o pipefail
 
 ENVIRONMENT=$1
@@ -364,6 +367,9 @@ cat <<HERECACHESERVER
 
   # redirect old puzzle queues
   rewrite ^/chill/site/queue/(.*)\$ /chill/site/puzzle-list/ permanent;
+
+  # redirect new players that refresh the new-player page
+  rewrite ^/chill/site/player/.*\$ /? redirect;
 
   # temporary redirect player profile page
   # TODO: remove redirect when implementing public player profile pages

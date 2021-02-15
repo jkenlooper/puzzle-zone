@@ -213,7 +213,7 @@ value:
 --- !ChillNode
 name: newplayerpage
 route: /new-player/
-template: newplayerpage.html.jinja2
+template: other/newplayerpage.html.jinja2
 value:
   pageimagemedia: puzzle-massive-logo-primary-on-white--1200x630.jpg
   pageimagemedia_width: 1200
