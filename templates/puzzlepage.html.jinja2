@@ -234,6 +234,7 @@
       {% if title or msg %}
         <h1>{{ title }}</h1>
         {% if puzzle.status == COMPLETED and puzzle.is_recent == 1 %}
+        {#
           <p>
             {% if puzzle.permission == PRIVATE and puzzle.is_original %}
               This unlisted jigsaw puzzle has been completed and cannot be rebuilt.  Only puzzle instances can be created from it.
@@ -245,6 +246,7 @@
               {%- endif %} can rebuild it after {{ puzzle.redo_date }}.
             {% endif %}
           </p>
+          #}
         {% else %}
         <p>{{ msg }}
         </p>
@@ -254,6 +256,7 @@
           {% else %}
             {% set piece_count = puzzle.pieces %}
           {% endif %}
+        {#
             {% if puzzle.permission == PRIVATE and puzzle.is_original %}
               {# Original puzzles that were unlisted (private) should not be rebuilt. #}
             {% else %}
@@ -270,6 +273,7 @@
           </pm-rebuild-form>
         </pm-dot-require>
           {% endif %}
+        #}
         {% endif %}
         {% endif %}
       {% endif %}
@@ -361,6 +365,7 @@
           <p>{{ puzzle.description }}</p>
         {% endif %}
           {% if not puzzle.is_original -%}
+          {#
           <p>
   Puzzle instance created by
   <pm-player-bit player="{{ puzzle.owner }}"></pm-player-bit>
@@ -368,6 +373,7 @@
   from this <a href="/chill{{ url_for('.page_uri', uri='front/{}'.format(puzzle.original_puzzle_id)) }}">original puzzle</a>
       {%- endif -%}
           </p>
+          #}
           {% endif %}
     </div>
     {% endif %}
