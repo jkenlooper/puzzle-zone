@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-#TODO: Add basic auth to upload page
 #TODO: remove iframe protection
 
 set -eu -o pipefail
@@ -327,6 +326,7 @@ HEREBEPRODUCTION
 fi
 cat <<HERECACHESERVER
 
+  # Allow site to be embedded within an iframe by commenting these out
   add_header X-Frame-Options DENY;
   add_header X-Content-Type-Options nosniff;
 
@@ -465,9 +465,9 @@ cat <<HERECACHESERVERUP
     }
 
     # Redirect players without a user or shareduser cookie to the new-player page
-    if (\$http_cookie !~* "(user|shareduser)=([^;]+)(?:;|\$)") {
-      rewrite ^/chill/(.*)\$  /chill/site/new-player/?next=/chill/\$1? redirect;
-    }
+    #if (\$http_cookie !~* "(user|shareduser)=([^;]+)(?:;|\$)") {
+    #  rewrite ^/chill/(.*)\$  /chill/site/new-player/?next=/chill/\$1? redirect;
+    #}
 
     proxy_set_header X-Real-IP \$remote_addr;
     proxy_set_header X-Forwarded-For \$remote_addr;
@@ -918,6 +918,24 @@ cat <<HEREORIGINSERVER
     add_header Cache-Control "public";
 
     proxy_pass http://127.0.0.1:${PORTCHILL};
+
+    rewrite ^/chill/(.*)\$  /\$1 break;
+  }
+
+  # Prevent players from accessing new puzzle upload pages
+  location /chill/site/new-puzzle/ {
+    limit_except GET {
+      deny all;
+    }
+    proxy_pass_header Server;
+    proxy_set_header  X-Real-IP  \$remote_addr;
+    proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
+    proxy_redirect http://localhost:${PORTCHILL}/ http://\$host/;
+
+    proxy_pass http://localhost:${PORTCHILL};
+
+    auth_basic "Restricted Content";
+    auth_basic_user_file ${SRVDIR}.htpasswd;
 
     rewrite ^/chill/(.*)\$  /\$1 break;
   }

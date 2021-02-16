@@ -56,6 +56,7 @@ def generate_user_login():
 
 
 def user_id_from_ip(ip, skip_generate=True):
+    return 12345
     current_app.logger.debug(f"user_id_from_ip {ip}")
     # start = time.perf_counter()
     cur = db.cursor()
