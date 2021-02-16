@@ -287,7 +287,7 @@ PUZZLE_RULES = set("${PUZZLE_RULES}".split())
 PUZZLE_FEATURES=set("${PUZZLE_FEATURES}".split())
 
 # Toggle to show other player bit icons on the puzzle page.
-SHOW_OTHER_PLAYER_BITS=True
+SHOW_OTHER_PLAYER_BITS=False
 
 DOMAIN_NAME = "${DOMAIN_NAME}"
 SITE_TITLE = "${SITE_TITLE}"
