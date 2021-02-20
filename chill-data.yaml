@@ -41,6 +41,18 @@ value:
   puzzle_files: _select-puzzle-resources-by-puzzle_id.sql
 
 --- !ChillNode
+name: profilepage
+route: /player/
+template: profilepage.html.jinja2
+value:
+  pageimagemedia: puzzle-massive-logo-primary-on-white--1200x630.jpg
+  pageimagemedia_width: 1200
+  pageimagemedia_height: 630
+  pagetitle: Player Profile
+  content:
+    description: Settings for the logged in player on the Puzzle Massive site.
+
+--- !ChillNode
 name: biticonspartial
 route: /bit-icons/<iconname>/
 template: bit-icons-img.html.jinja2
@@ -209,6 +221,18 @@ template: admin-playerdetailspage.html.jinja2
 value:
   player: select-admin-player-details-for-player-id.sql
   player_id: route-pass-player-id.sql
+
+--- !ChillNode
+name: playerpuzzlelistpage
+route: /player-puzzle-list/
+template: playerpuzzlelistpage.html.jinja2
+value:
+  pageimagemedia: puzzle-massive-logo-primary-on-white--1200x630.jpg
+  pageimagemedia_width: 1200
+  pageimagemedia_height: 630
+  page:
+    description: Puzzle instances that are owned by the current player
+    title: Player Puzzle List
 
 --- !ChillNode
 name: newplayerpage

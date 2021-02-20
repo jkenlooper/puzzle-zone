@@ -7,6 +7,8 @@ import random
 import time
 import datetime
 import hashlib
+import socket
+import struct
 
 from flask import current_app, json, redirect, make_response, request, url_for
 from flask.views import MethodView
@@ -23,6 +25,14 @@ LITTLE_LESS_THAN_A_WEEK = (60 * 60 * 24 * 7) - random.randint(3023, 3600 * 14)
 LITTLE_MORE_THAN_A_DAY = (60 * 60 * 24) + random.randint(3023, 3600 * 14)
 MAX_BAN_TIME = LITTLE_LESS_THAN_A_WEEK
 HONEY_POT_BAN_TIME = LITTLE_MORE_THAN_A_DAY
+
+
+def ip2long(ip):
+    """
+    Convert an IP string to long
+    """
+    packedIP = socket.inet_aton(ip)
+    return struct.unpack("!L", packedIP)[0]
 
 
 def hidden_preview(puzzle_data):
@@ -56,7 +66,9 @@ def generate_user_login():
 
 
 def user_id_from_ip(ip, skip_generate=True):
-    return 12345
+    # Not using a User db for this implementation.
+    return ip2long(ip)
+
     current_app.logger.debug(f"user_id_from_ip {ip}")
     # start = time.perf_counter()
     cur = db.cursor()
