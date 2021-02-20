@@ -256,10 +256,10 @@
           {% else %}
             {% set piece_count = puzzle.pieces %}
           {% endif %}
-        {#
             {% if puzzle.permission == PRIVATE and puzzle.is_original %}
               {# Original puzzles that were unlisted (private) should not be rebuilt. #}
             {% else %}
+        {#
         <pm-dot-require min="{{ config.MINIMUM_PIECE_COUNT }}" type="none">
           <pm-rebuild-form max-point-cost="{{ config.MAX_POINT_COST_FOR_REBUILDING }}"
                            new-user-starting-points="{{ config.NEW_USER_STARTING_POINTS }}"
@@ -272,8 +272,8 @@
                            >
           </pm-rebuild-form>
         </pm-dot-require>
-          {% endif %}
         #}
+          {% endif %}
         {% endif %}
         {% endif %}
       {% endif %}
