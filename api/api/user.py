@@ -464,6 +464,32 @@ class UserDetailsView(MethodView):
         is_shareduser = False
         user = int(current_app.secure_cookie.get("user") or "0")
         if not user:
+
+            # No user accounts that don't have a cookie set.  Which in this
+            # case only the admin player can set user cookie.
+            return make_response(
+                json.jsonify(
+                    {
+                        "login": "",
+                        "icon": "",
+                        "score": 0,
+                        "dots": 0,
+                        "id": int(user_id_from_ip(request.headers.get("X-Real-IP"))),
+                        "cookie_expires": "",
+                        "name": "",
+                        "name_approved": False,
+                        "approved_date": "",
+                        "email": "",
+                        "email_verified": False,
+                        "will_expire_cookie": False,
+                        "bit_expired": False,
+                        "user_puzzle_count": 0,
+                        "puzzle_instance_count": 0,
+                    }
+                ),
+                200,
+            )
+
             user = int(user_id_from_ip(request.headers.get("X-Real-IP")))
             is_shareduser = True
 
