@@ -16,6 +16,9 @@
 
   <pm-profile-bit media-path="{{ url_for('send_media_file', filename='') }}" score dots name claim attribution player-profile-url="/chill{{ url_for('.page_uri', uri='player') }}"></pm-profile-bit>
 
+  <pm-logout-link></pm-logout-link>
+
+  {% if False %}
   <div class="pm-Doc-breakOut u-textCenter">
     <details class="u-marginTopMd u-marginBottomMd">
       <summary>Change Bit Icon</summary>
@@ -76,6 +79,7 @@
       </div>
     </div>
   </div>
+  {% endif %}
 </section>
 
 {% endblock %}

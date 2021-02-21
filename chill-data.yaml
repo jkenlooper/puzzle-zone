@@ -199,10 +199,7 @@ value:
 --- !ChillNode
 name: internal_player_bit_for_id
 route: /internal/player-bit/<int:player_id>/
-template: player-bit.html.jinja2
-value:
-  bit: select-bit-icon-for-player-id.sql
-  player_id: route-pass-player-id.sql
+template: other/no-bit-icon.html.jinja2
 
 --- !ChillNode
 name: admin_player_page
