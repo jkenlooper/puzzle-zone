@@ -2,10 +2,11 @@
 
 set -o pipefail
 set -o errexit
+set -o nounset
 
 function usage {
   cat <<USAGE
-Usage: ${0} [-h]
+Usage: ${0} [-h] [<path-to-puzzle-massive-dir>]
 
 Options:
   -h            Show help
@@ -30,52 +31,57 @@ shift "$((OPTIND-1))";
 
 
 # This repo should be a git submodule in the puzzle-massive repo.
-PATH_TO_PM_PROJECT=../
+PATH_TO_PM_PROJECT=$1
 
-# puzzle-massive-content
-PMC=$(basename $PWD)
+# /path/to/puzzle-massive-content
+PMC=$PWD
 
 (
+mkdir -p ${PATH_TO_PM_PROJECT}chill-data;
 cd ${PATH_TO_PM_PROJECT}chill-data;
 echo "
 Creating symbolic links in $PWD"
-for f in ../${PMC}/chill-data/*.yaml; do
+for f in ${PMC}/chill-data/*.yaml; do
   ln --symbolic --force --verbose $f
 done
 )
 
 (
+mkdir -p ${PATH_TO_PM_PROJECT}documents/other;
 cd ${PATH_TO_PM_PROJECT}documents/other;
 echo "
 Creating symbolic links in $PWD"
-for f in ../../${PMC}/documents/*; do
+for f in ${PMC}/documents/*; do
   ln --symbolic --force --verbose $f
 done
 )
 
 (
+mkdir -p ${PATH_TO_PM_PROJECT}queries/other;
 cd ${PATH_TO_PM_PROJECT}queries/other;
 echo "
 Creating symbolic links in $PWD"
-for f in ../../${PMC}/queries/*.sql; do
+for f in ${PMC}/queries/*.sql; do
   ln --symbolic --force --verbose $f
 done
 )
 
 (
+mkdir -p ${PATH_TO_PM_PROJECT}templates/other;
 cd ${PATH_TO_PM_PROJECT}templates/other;
 echo "
 Creating symbolic links in $PWD"
-for f in ../../${PMC}/templates/*; do
+for f in ${PMC}/templates/*; do
   ln --symbolic --force --verbose $f
 done
 )
 
 (
+mkdir -p ${PATH_TO_PM_PROJECT}source-media/bit-icons;
 cd ${PATH_TO_PM_PROJECT}source-media/bit-icons;
 echo "
 Creating symbolic links in $PWD"
-for f in ../../${PMC}/bit-icons/*; do
+for f in ${PMC}/bit-icons/*; do
   ln --symbolic --force --verbose $f
 done
 )
